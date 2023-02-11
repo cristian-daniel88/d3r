@@ -47,15 +47,15 @@ class AddBook extends Controller
        $nameImg = $request->file('image')->getClientOriginalName();
        $extImg =   $request->file('image')->getClientOriginalExtension();
        $sizeImg =  $request->file('image')->getSize();
-       $nameImgHash = hash('ripemd160', 'The quick brown fox jumped over the lazy dog.'). "." . $extImg;
-       $request->file('image')->storeAs('public/images/',  $nameImgHash);
+       //$nameImgHash = hash('ripemd160', 'The quick brown fox jumped over the lazy dog.'). "." . $extImg;
+       $request->file('image')->storeAs('public/images/',  $nameImg);
        
 
        $nameFile = $request->file('file')->getClientOriginalName();
        $extIFile =   $request->file('file')->getClientOriginalExtension();
        $sizeFile =  $request->file('file')->getSize();
-       $nameFileHash = hash('ripemd160', 'The quick brown fox jumped over the lazy dog.'). "." . $extIFile;
-       $request->file('file')->storeAs('public/files/',  $nameFileHash);
+       //$nameFileHash = hash('ripemd160', 'The quick brown fox jumped over the lazy dog.'). "." . $extIFile;
+       $request->file('file')->storeAs('public/files/',  $nameFile);
       
 
        $book = new Books();
@@ -64,8 +64,8 @@ class AddBook extends Controller
        $book->instrument_id = $request->input('instrument');
        $book->authors = $request->input('authors');
        $book->musical_arrangements = $request->input('arrangements');
-       $book->image = $nameImgHash;
-       $book->file = $nameFileHash;
+       $book->image = $nameImg;
+       $book->file = $nameFile;
        $book->save(); 
 
        redirect()->back() ;

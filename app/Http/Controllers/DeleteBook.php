@@ -11,6 +11,7 @@ class DeleteBook extends Controller
 {
     public function deleteBook (Request $request) 
     {
+        
     $book = Books::select('*')
     ->whereRaw('id =' . $request->input('bookId'))->first();
 

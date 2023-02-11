@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddBook;
+use App\Http\Controllers\BookContainer;
 use App\Http\Controllers\DeleteBook;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -41,7 +42,5 @@ Route::post('/delete/book', [DeleteBook::class, 'deleteBook']);
 
 
 //Book Id livewire
-Route::get('/book', function () {
-    return view('book');
-});
+Route::get('/book', [BookContainer::class, 'index'] );
 

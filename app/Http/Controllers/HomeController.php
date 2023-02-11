@@ -16,6 +16,8 @@ class HomeController extends Controller
  {
     
     session_start();
+    
+
     if (empty($_SESSION["username"])) {
       return redirect()->action([LoginController::class, 'index']);
     }
@@ -24,9 +26,6 @@ class HomeController extends Controller
      $books = Books::
        join('genres', 'genres.id', '=', 'books.genre_id')
      ->join('instruments', 'instruments.id', '=', 'books.instrument_id')
-     
-     
-     
      ->orderby('genres.name', 'ASC')
      
      ->get([
@@ -41,6 +40,9 @@ class HomeController extends Controller
            'books.id',
            
      ]);
+
+    
+     
 
      return view('books', 
      ['books' => $books,
