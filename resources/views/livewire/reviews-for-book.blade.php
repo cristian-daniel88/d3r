@@ -295,16 +295,14 @@ echo '<i class="fa-regular fa-star text-yellow-500 star"></i>';
     font-medium text-gray-900 dark:text-white">
         New review:
     </label>
-    <textarea cols="100" rows="3"  wire:model.defer="review"
+    <textarea cols="100" rows="3"  wire:model.defer="review" id="textareaReview"
     class="bg-gray-50 border border-gray-300 
     text-gray-900 text-sm rounded-lg 
     focus:ring-blue-500 focus:border-blue-500 
     block w-full p-2.5 dark:bg-gray-700 
     dark:border-gray-600 dark:placeholder-gray-400 
     dark:text-white dark:focus:ring-blue-500 
-    dark:focus:border-blue-500"
-    
-    ></textarea>
+    dark:focus:border-blue-500"></textarea>
     <br>
     <label  class="block mb-2 text-sm font-medium 
     text-gray-900 dark:text-white">
@@ -315,8 +313,9 @@ echo '<i class="fa-regular fa-star text-yellow-500 star"></i>';
     w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
     dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
     wire:model.defer="rating"
+
     >
-        <option value="1">&#9733;</option>
+        <option value="1" selected>&#9733;</option>
         <option value="2">&#9733;&#9733;</option>
         <option value="3">&#9733;&#9733;&#9733;</option>
         <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
@@ -325,16 +324,31 @@ echo '<i class="fa-regular fa-star text-yellow-500 star"></i>';
     <br>
     
     <button 
-    wire:click.prevent="sentReview()"
+    type="button"
+   
     class="bg-blue-500  hover:bg-blue-700 text-white 
-    font-bold py-2 px-4 border border-blue-700 rounded">
+    font-bold py-2 px-4 border border-blue-700 rounded"     id="sentReview1">
     Send
+    
     </button>
+
+    <input type="hidden"  wire:click.prevent="sentReview()" id="sentReview2">
 
    
 </div>
 </form>
 <script>
+    console.log(document.getElementById('textareaReview').value);
+
+    
+    
+    document.getElementById('sentReview1').addEventListener('click', (e) => {
+        //wire:click.prevent="sentReview()"
+        document.getElementById('sentReview2').click();
+
+     
+        return
+    })
     window.addEventListener('refresh', event => {
         alert(event.detail.message);
 
