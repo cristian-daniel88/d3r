@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddBook;
 use App\Http\Controllers\BookContainer;
 use App\Http\Controllers\DeleteBook;
+use App\Http\Controllers\EditReview;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -43,4 +44,6 @@ Route::post('/delete/book', [DeleteBook::class, 'deleteBook']);
 
 //Book Id livewire
 Route::get('/book', [BookContainer::class, 'index'] );
+Route::post('/book', [EditReview::class, 'editReview']);
+Route::post('/delete/review', [EditReview::class, 'deleteReview']);
 

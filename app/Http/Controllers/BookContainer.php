@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Books;
 use App\Models\Genres;
 use App\Models\Instruments;
 use App\Models\Reviews;
@@ -96,7 +97,13 @@ class BookContainer extends Controller
           if (empty($_SESSION["username"])) {
           return redirect()->action([LoginController::class, 'index']);
           }
-           
+          $current_page = filter_input(INPUT_GET,"id",FILTER_SANITIZE_NUMBER_INT);
+          $book = Books::find($current_page);
+
+           if(!$book) {
+            return redirect()->action([HomeController::class, 'index']);
+           } 
+          
           return $this->bookFunction();
          
       }

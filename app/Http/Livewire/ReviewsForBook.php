@@ -8,7 +8,9 @@ use App\Models\Books;
 use App\Models\Genres;
 use App\Models\Instruments;
 use App\Models\Reviews;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redis;
 use Livewire\Component;
 
 class ReviewsForBook extends Component
@@ -18,6 +20,10 @@ class ReviewsForBook extends Component
 
     public $review;
     public $rating;
+
+    public $reviewId;
+    public $reviewEdit = 11112;
+    
     
     public function funcion () {
  
@@ -63,6 +69,7 @@ class ReviewsForBook extends Component
     
     public function render()
     {
+      
       $this->funcion();
         
        
@@ -87,6 +94,10 @@ class ReviewsForBook extends Component
       return view('livewire.reviews-for-book');
       
     }
+
+
+
+  
 
     public function success() {
       $this->dispatchBrowserEvent('refresh', ['message' =>'Review sent...']);

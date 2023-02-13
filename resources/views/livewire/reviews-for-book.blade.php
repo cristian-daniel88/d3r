@@ -169,14 +169,19 @@ echo '<i class="fa-regular fa-star text-yellow-500 star"></i>';
               </button>
           </div>
 
-          <form action="{{env("app_url")}}edit/review" method="POST"
+          <form method="POST" action="{{env("APP_URL")}}book"
             class="review-edit bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            @csrf 
-            <input type="hidden" name="reviewId" value="{{$review->id}}">
+             
+            @csrf
+            <input type="hidden" value="{{$review->id}}" name="id">
+
+
             <textarea name="textarea" 
             cols="30" rows="10"
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            value="{{$review->review}}"
+            class="shadow appearance-none border rounded w-full 
+            py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            
+            
             >{{$review->review}}</textarea>
             <br>
             <select name="rating" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -194,7 +199,7 @@ echo '<i class="fa-regular fa-star text-yellow-500 star"></i>';
                   hover:bg-blue-800 focus:ring-4 focus:outline-none 
                   focus:ring-blue-300 font-medium rounded-lg text-sm px-5 
                   py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 
-                  dark:focus:ring-blue-800" type="submit">I accept</button>
+                  dark:focus:ring-blue-800"  type="submit">I accept</button>
                   <button data-modal-hide="defaultModal{{$review->id}}" 
                   type="button" class="text-gray-500 bg-white 
                   hover:bg-gray-100 focus:ring-4 
@@ -215,10 +220,11 @@ echo '<i class="fa-regular fa-star text-yellow-500 star"></i>';
 </div>
 
 <button data-modal-target="defaultModal{{$review->id}}" 
+    
              data-modal-toggle="defaultModal{{$review->id}}" 
              type="button" class="mx-6">
-<i class="fas fa-edit"></i>
-</button>
+            <i class="fas fa-edit"></i>
+            </button>
 
             
             
@@ -373,5 +379,7 @@ echo '<i class="fa-regular fa-star text-yellow-500 star"></i>';
         }, 1000);
 
     })
+
+    document.getElementById("")
 </script>
 </div>
