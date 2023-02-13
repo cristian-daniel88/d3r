@@ -308,14 +308,16 @@ echo '<i class="fa-regular fa-star text-yellow-500 star"></i>';
     text-gray-900 dark:text-white">
     Rating:
     </label>
-    <select  class="bg-gray-50 border border-gray-300 text-gray-900 
+    <span class="text-red-700" id="ratingValueSpan"></span>
+    <select id="ratingSelect"  class="bg-gray-50 border border-gray-300 text-gray-900 
     text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block 
     w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
     dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
     wire:model.defer="rating"
 
     >
-        <option value="1" selected>&#9733;</option>
+        <option value="" selected>--</option>
+        <option value="1">&#9733;</option>
         <option value="2">&#9733;&#9733;</option>
         <option value="3">&#9733;&#9733;&#9733;</option>
         <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
@@ -343,16 +345,33 @@ echo '<i class="fa-regular fa-star text-yellow-500 star"></i>';
     
     
     document.getElementById('sentReview1').addEventListener('click', (e) => {
-        //wire:click.prevent="sentReview()"
+        
+         if($("#ratingSelect").val() == "") 
+         {
+            document.getElementById("ratingValueSpan").innerHTML = "Please choose a value"
+            return
+         }
+       
         document.getElementById('sentReview2').click();
 
      
-        return
+        
     })
-    window.addEventListener('refresh', event => {
-        alert(event.detail.message);
 
-        location.reload();
+    document.getElementById("ratingSelect").addEventListener("click" , () => {
+        document.getElementById("ratingValueSpan").innerHTML = ""
+    })
+
+    window.addEventListener('refresh', event => {
+        
+        //alert(event.detail.message);
+        toastr.success(event.detail.message)
+
+        setTimeout(() => {
+            location.reload();
+            
+        }, 1000);
+
     })
 </script>
 </div>

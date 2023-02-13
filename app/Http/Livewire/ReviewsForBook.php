@@ -72,18 +72,17 @@ class ReviewsForBook extends Component
 
     public function sentReview () 
     { 
-      // session_start();
+      session_start();
       
-      // $newReview = new Reviews();
-      // $newReview->user_id = $_SESSION['id'];
-      // $newReview->book_id = $_SESSION['bookId'];
-      // $newReview->rating = $this->rating;
-      // $newReview->review = $this->review;
-      // $newReview->save();
+      $newReview = new Reviews();
+      $newReview->user_id = $_SESSION['id'];
+      $newReview->book_id = $_SESSION['bookId'];
+      $newReview->rating = $this->rating;
+      $newReview->review = $this->review;
+      $newReview->save();
       
-      //$this->success();
-      $this->avg;
-      $this->reviews;
+      $this->success();
+     
 
       return view('livewire.reviews-for-book');
       

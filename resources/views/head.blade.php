@@ -7,4 +7,5 @@
     <script src="{{asset('js/fontawesome.js')}}"></script>
     <link href="{{asset('css/flowbite.css')}}" rel="stylesheet" />
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/toastr.css')}}">
 </head>
