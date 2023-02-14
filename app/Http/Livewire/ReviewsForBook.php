@@ -77,7 +77,7 @@ class ReviewsForBook extends Component
     }
 
 
-    public function sentReview () 
+    public function store() 
     { 
       session_start();
       
@@ -101,5 +101,6 @@ class ReviewsForBook extends Component
 
     public function success() {
       $this->dispatchBrowserEvent('refresh', ['message' =>'Review sent...']);
+      session()->flash('success','Post Created Successfully!!');
     }
 }

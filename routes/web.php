@@ -6,6 +6,7 @@ use App\Http\Controllers\DeleteBook;
 use App\Http\Controllers\EditReview;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SearchBook;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,23 +28,18 @@ Route::post('/', [LoginController::class, 'login']);
 // HOME
 Route::get('/home', [HomeController::class, 'index']);
 
-
 // ADD BOOK
 Route::get('/addbook', [AddBook::class, 'index']);
 Route::post('/addbook', [AddBook::class, 'store']);
+
 // DELETE BOOK
 Route::post('/delete/book', [DeleteBook::class, 'deleteBook']);
 
-
-
-
-
-
-
-
-
-//Book Id livewire
+// BOOK ID LIVEWIRE
 Route::get('/book', [BookContainer::class, 'index'] );
 Route::post('/book', [EditReview::class, 'editReview']);
 Route::post('/delete/review', [EditReview::class, 'deleteReview']);
+
+// SEARCH BOOK
+Route::get('/search', [SearchBook::class, 'index'] );
 

@@ -340,7 +340,7 @@ echo '<i class="fa-regular fa-star text-yellow-500 star"></i>';
     
     </button>
 
-    <input type="hidden"  wire:click.prevent="sentReview()" id="sentReview2">
+    <input type="hidden"  wire:click.prevent="store()" id="sentReview2">
 
    
 </div>

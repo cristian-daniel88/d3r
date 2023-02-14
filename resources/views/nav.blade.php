@@ -52,14 +52,13 @@
   
             </div>
           </div>
-          <form method="GET" action="" class="form-search_lg">
+          <form method="GET" action="{{env('app_url')}}search" class="form-search_lg">
             <select name="filter" id="">
-            <option value="all">All</option>
             <option value="genres">Genre</option>
             <option value="">Author</option>
             <option value="">Instruments</option>
             </select>
-            <input type="text" class="input-search_lg">
+            <input type="text" class="input-search_lg" name="value">
             <button type="submit" class="button-search_lg">
               <i class="fa-solid fa-magnifying-glass"></i>  
             </button>     
