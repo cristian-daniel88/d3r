@@ -54,9 +54,10 @@
           </div>
           <form method="GET" action="{{env('app_url')}}search" class="form-search_lg">
             <select name="filter" id="">
-            <option value="genres">Genre</option>
-            <option value="">Author</option>
-            <option value="">Instruments</option>
+            <option value="genre">Genre</option>
+            <option value="author">Author</option>
+            <option value="instrument">Instruments</option>
+            <option value="title">Title</option>
             </select>
             <input type="text" class="input-search_lg" name="value">
             <button type="submit" class="button-search_lg">

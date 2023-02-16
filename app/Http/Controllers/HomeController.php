@@ -51,7 +51,6 @@ class HomeController extends Controller
   }
 
   protected function bookFunction () {
-    $current_page = filter_input(INPUT_GET,"id",FILTER_SANITIZE_NUMBER_INT);
    
        
     $book =  DB::table('books')
