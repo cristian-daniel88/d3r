@@ -22,24 +22,28 @@ class AddBook extends Controller
     }
 
     public function store (Request $request) {
-              // if(
+        session_start();
+      //  dd($request->input('arrangements'));
+        if(
        
-       //     !$request->input('title') or
-       //     !$request->input('genre') or
-       //     !$request->input('description') or
-       //     !$request->input('authors') or
-       //     !$request->file('image') or
-       //     !$request->file('file') 
+           !$request->input('title') or
+           !$request->input('genre') or
+           !$request->input('instrument') or
+           !$request->input('authors') or
+           !$request->input('arrangements') or
+           !$request->file('image') or
+           !$request->file('file') 
 
-       //  ) 
-       // {
-       //        return view('form-create-book',  [
+        ) 
+       {
+              return view('addbook',  [
                      
-       //               'genres' => Genres::all(),
-       //               'failed' => 'Boock sent failed, please check the fields' 
-       //        ]);  
+                     'genres' => Genres::all(),
+                     'instruments' => Instruments::all(),
+                     'failed' => 'Boock sent failed, please check the fields' 
+              ]);  
               
-       // }
+       }
 
 
 
@@ -47,14 +51,39 @@ class AddBook extends Controller
        $nameImg = $request->file('image')->getClientOriginalName();
        $extImg =   $request->file('image')->getClientOriginalExtension();
        $sizeImg =  $request->file('image')->getSize();
-       //$nameImgHash = hash('ripemd160', 'The quick brown fox jumped over the lazy dog.'). "." . $extImg;
+
+       $extImgPass = ($extImg == "png" || $extImg == "jpg");
+
+       if(!$extImgPass) 
+       {
+        return view('addbook',  [
+                     
+            'genres' => Genres::all(),
+            'instruments' => Instruments::all(),
+            'failed' => 'Error, please send .jpg or .png file' 
+        ]);  
+       }
+     
+
        $request->file('image')->storeAs('public/images/',  $nameImg);
        
 
        $nameFile = $request->file('file')->getClientOriginalName();
        $extIFile =   $request->file('file')->getClientOriginalExtension();
        $sizeFile =  $request->file('file')->getSize();
-       //$nameFileHash = hash('ripemd160', 'The quick brown fox jumped over the lazy dog.'). "." . $extIFile;
+       
+       $extIFilePass = ($extIFile == "pdf");
+
+       if(!$extIFilePass) 
+       {
+        return view('addbook',  [
+                     
+            'genres' => Genres::all(),
+            'instruments' => Instruments::all(),
+            'failed' => 'Error, please send .pdf file' 
+        ]);  
+       }
+
        $request->file('file')->storeAs('public/files/',  $nameFile);
       
 

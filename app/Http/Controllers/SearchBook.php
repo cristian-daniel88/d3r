@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class SearchBook extends Controller
 {
     private function getBook ($filter, $value) {
-
+        
         if ($filter == 'genre' ) {
             $books = Books::
             join('genres', 'genres.id', '=', 'books.genre_id')
@@ -90,8 +90,7 @@ class SearchBook extends Controller
           ]);;
 
           return $books;
-        }
-
+        } 
 
 
     } 
@@ -100,6 +99,7 @@ class SearchBook extends Controller
     {
 
         session_start(); 
+
         if (isset($_GET['filter'])) { $filter = filter_input(INPUT_GET, 'filter', FILTER_SANITIZE_STRING);}
         if (isset($_GET['value'])) { $value = filter_input(INPUT_GET, 'value', FILTER_SANITIZE_STRING);}
 
@@ -114,7 +114,7 @@ class SearchBook extends Controller
 
       $reviews = Reviews::all();
 
-
+        
       
         return view('search',  
         ['books' => $books,

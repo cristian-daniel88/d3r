@@ -9,12 +9,12 @@ tracking-wider
 >Add Book</h2>
 <br>
 
-@php
- if( !empty($failed)) {
-  echo $failed;
- }
 
-@endphp
+@if (!empty($failed))
+    <p class='p-alert' style='color:red; text-align:center'> {{$failed}}</p>
+@else
+<p class='p-alert' style='color:red; text-align:center'></p>
+@endif
 
 <div class="w-full max-w-xl m-auto my-auto ">
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -129,4 +129,28 @@ tracking-wider
     </form>
 
   </div>
+  <script>
+    console.log(document.getElementsByTagName('input').length)
+
+    for (let index = 0; index < document.getElementsByTagName('input').length; index++) {
+      document.getElementsByTagName('input')[index].addEventListener("click" , () => {
+       
+          document.getElementsByClassName('p-alert')[0].innerHTML = "";
+          
+        
+      })
+      
+    }
+
+    for (let index = 0; index < document.getElementsByTagName('select').length; index++) {
+      document.getElementsByTagName('select')[index].addEventListener("click" , () => {
+      
+          document.getElementsByClassName('p-alert')[0].innerHTML = "";
+          
+        
+      })
+      
+    }
+      
+  </script>
 @endsection

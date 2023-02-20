@@ -1,7 +1,19 @@
 @extends('d3r')
 @section('body')
 <div class="h-14"></div>
-
+@php
+    
+    if (isset($_GET['filter'])) { $filter = filter_input(INPUT_GET, 'filter', FILTER_SANITIZE_STRING);}
+    if (isset($_GET['value'])) { $value = filter_input(INPUT_GET, 'value', FILTER_SANITIZE_STRING);}
+@endphp
+@if (empty($books[0]))
+    <br>
+    <br>
+    <br>
+    <br>
+    <p style="text-align: center">{{$value}} in {{$filter}} not found</p>
+    <a href="{{env('APP_URL')}}home"><p style="text-align: center; color:blue">Back</p> </a>
+@endif
 @php $array = array();@endphp
 
 
