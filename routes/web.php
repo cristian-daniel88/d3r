@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddBook;
+use App\Http\Controllers\BackingTrack;
 use App\Http\Controllers\BookContainer;
 use App\Http\Controllers\DeleteBook;
 use App\Http\Controllers\EditReview;
@@ -42,4 +43,10 @@ Route::post('/delete/review', [EditReview::class, 'deleteReview']);
 
 // SEARCH BOOK
 Route::get('/search', [SearchBook::class, 'index'] );
+
+
+
+// ADD AUDIO
+Route::get('/addaudio', [BackingTrack::class, 'formAudio']);
+Route::post('/addaudio', [BackingTrack::class, 'create']);
 
