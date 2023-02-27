@@ -9,6 +9,9 @@ class BackingTrack extends Controller
 {
     public function formAudio () {
     session_start();
+    if (empty($_SESSION["username"])) {
+        return redirect()->action([LoginController::class, 'index']);
+    }
     return view("addAudio");
 
     }
